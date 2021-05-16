@@ -17,72 +17,150 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-
+    <style>
+        .ChatCard {
+            display: block;
+            padding: 10px 20px;
+            position: relative;
+        }
+        
+        .ChatCard .TypeBox textarea {
+            width: calc(100% - 27px);
+            height: 40px;
+            border: none;
+            background: #ffffff;
+            font-size: 15px;
+            color: #000000;
+            text-align: left;
+            appearance: none;
+            box-shadow: none;
+            padding: 10px;
+        }
+        
+        .ChatCard .Btn {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+        }
+        
+        .ChatCard .Btn a,
+        .ChatCard .Btn button {
+            display: block;
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #f2b632;
+            color: #ffffff;
+            font-size: 18px;
+            -webkit-appearance: none;
+            appearance: none;
+            border: none;
+            border-radius: 100%;
+            box-shadow: none;
+        }
+    </style>
     <!-- <script defer src="http://localhost:2005/socket.io/socket.io.js"></script>
     <script defer src="assets/js/client.js"></script> -->
 
 </head>
 <!-- user data in session here -->
 <% user_session.forEach(function(data){ %>
-<!-- commented tag  -->
-<%#  console.log(data.user_file) %>
-<%#  data.user_file %>
+    <!-- commented tag  -->
+    <%#  console.log(data.user_file) %>
+        <%#  data.user_file %>
 
-<body class="fixed-left">
-    <!-- Loader -->
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner"></div>
-        </div>
-    </div>
+            <body class="fixed-left">
+                <!-- Loader -->
+                <div id="preloader">
+                    <div id="status">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
 
-    <!-- Begin page -->
-    <div id="wrapper">
+                <!-- Begin page -->
+                <div id="wrapper">
 
-        <!-- ========== Left Sidebar Start ========== -->
-        <% include left_header.ejs %>
-        <!-- Left Sidebar End -->
+                    <!-- ========== Left Sidebar Start ========== -->
+                    <% include left_header.ejs %>
+                        <!-- Left Sidebar End -->
 
-        <!-- Start right Content here -->
+                        <!-- Start right Content here -->
 
-        <div class="content-page">
-            <p>
-                
-            </p>
-            <!-- Start content -->
-            <div class="content">
-<input type="hidden" class="username" value="<%= data.user_username %>">
-                <!-- Top Bar Start -->
-                <% include top_header.ejs %>
+                        <div class="content-page">
+                            <p>
 
-                <!-- Top Bar End -->
+                            </p>
+                            <!-- Start content -->
+                            <div class="content">
+                                <input type="hidden" class="username" value="<%= data.user_username %>">
+                                <!-- Top Bar Start -->
+                                <% include top_header.ejs %>
 
-                <div class="page-content-wrapper ">
+                                    <!-- Top Bar End -->
 
-                    <div class="container-fluid">
+                                    <div class="page-content-wrapper ">
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="page-title-box">
-                                    <h4 class="page-title"> Dashboard</h4>
-                                </div>
+                                        <div class="container-fluid">
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="page-title-box">
+                                                        <h4 class="page-title"> Dashboard</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end page title end breadcrumb -->
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-sm-3 bg-light">
+                                                        <div class="UserList" style="left: 249px;top: 136px;">
+                                                            <ul>
+                                                                <li class="menu-title text-secondary">Online</li>
+                                                                <div id="online_user_list"></div>
+                                                                <hr>
+                                                                <li class="menu-title">Offline</li>
+                                                                <div id="offline_user_list"></div>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-7 bg-light ml-5">
+                                                        <div class="message-container" style="height:500px"></div>
+                                                        <div class="container-fluid">
+                                                            <form id="send-container" onformsubmit="return false">
+                                                                <!-- <input type="text">
+                                                                <button class="n">SEND</button> -->
+
+                                                                <div class=" container-fluid ChatCard">
+                                                                    <p class="small typing"></p>
+                                                                    <!-- <form> -->
+                                                                    <hr>
+                                                                    <div class="TypeBox"><textarea class="message-input " placeholder="Type your message here.."></textarea></div>
+                                                                    <div class="Btn"><button type="submit" class="send-button mr-2 mt-4"><i
+                                                                        class="ion ion-paper-airplane " ></i></button></div>
+                                                                    <!-- </form> -->
+                                                                </div>
+
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- container -->
+                                    </div>
+                                    <!-- Page content Wrapper -->
                             </div>
-                        </div>
-                        <!-- end page title end breadcrumb -->
+                            <!-- content -->
+                            <% include script_footer.ejs %>
 
-                        <div class="message-container"></div>
-                        <form id="send-container" onformsubmit="return false">
-                            <input type="text" class="message-input">
-                            <button type="submit" class="send-button">SEND</button>
-                        </form>
-
-                    </div><!-- container -->
-                </div> <!-- Page content Wrapper -->
-            </div> <!-- content -->
-            <% include script_footer.ejs %>
-
-</body>
-<!-- user data session end here -->
-<% }); %>
+            </body>
+            <!-- user data session end here -->
+            <% }); %>
 
 </html>
