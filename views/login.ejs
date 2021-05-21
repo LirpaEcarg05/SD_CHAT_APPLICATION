@@ -14,80 +14,229 @@
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <!-- <link href="assets/css/style.css" rel="stylesheet" type="text/css"> -->
+    <link href="index.css" rel="stylesheet" type="text/css">
 
 </head>
 
 
 <body class="fixed-left">
+    <div class="wrapper">
 
-<div class="accountbg"></div>
-<div class="wrapper-page">
+        <div class="box">
 
-    <div class="card">
-        <div class="card-body">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="accountbg"></div>
+        <div class="wrapper-page">
 
-            <h3 class="text-center mt-0 m-b-15">
-                <a href="javascript:void(0);" class="logo logo-admin">LogIn</a>
-            </h3>
+            <div class="card">
+                <div class="card-body">
 
-            <div class="p-3">
-                <span style="color:red;" class="error"><% if(error_msg) { %> <%= error_msg; %> <% } %></span>
-                <form class="form-horizontal m-t-20" action="http://localhost:2005/verify_login" method="post" >
-                    <label class="control-label col-sm-12" for="name" style="padding: 0px">Username:</label>
-                    <div class="form-group row">
-                        <div class="col-12">
-                            <input class="form-control" id="name" name='username' type="text" required="" placeholder="Username">
-                        </div>
+                    <h3 class="text-center mt-0 m-b-15">
+                        <a href="javascript:void(0);" class="logo logo-admin">LogIn</a>
+                    </h3>
+
+                    <div class="p-3">
+                        <span style="color:red;" class="error"><% if(error_msg) { %> <%= error_msg; %> <% } %></span>
+                        <form class="form-horizontal m-t-20" action="http://localhost:2005/verify_login" method="post">
+                            <label class="control-label col-sm-12 " id="a" for="name" style="padding: 0px">Username:</label>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" id="name" name='username' type="text" required="" placeholder="Username">
+                                </div>
+                            </div>
+                            <label class="control-label col-sm-12" for="name" style="padding: 0px">Password:</label>
+                            <span class=" mdi mdi-eye show_pass" style="cursor: pointer"> Show Password</span>
+                            <span class=" mdi mdi-eye-off hide_pass" style="cursor: pointer; display: none"> Hide Password</span>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" type="password" id="pass" name="password" required="" placeholder="Password">
+                                </div>
+                            </div>
+
+                            <div class="form-group text-center row m-t-20">
+                                <div class="col-12">
+                                    <button class="btn btn-success btn-block waves-effect waves-light" id="login_id" type="submit">Log In</button>
+                                </div>
+                            </div>
+                            <div class="form-group text-center row m-t-20">
+                                <div class="col-12">
+                                    <a href="http://localhost:2005/register" class="btn btn-danger btn-block waves-effect waves-light">Register</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <label class="control-label col-sm-12" for="name" style="padding: 0px">Password:</label>
-                    <span class=" mdi mdi-eye show_pass" style="cursor: pointer"> Show Password</span>
-                    <span class=" mdi mdi-eye-off hide_pass" style="cursor: pointer; display: none"> Hide Password</span>
-                    <div class="form-group row">
-                        <div class="col-12">
-                            <input class="form-control" type="password" id="pass" name="password" required="" placeholder="Password">
-                        </div>
-                    </div>
 
-                    <div class="form-group text-center row m-t-20">
-                        <div class="col-12">
-                            <button class="btn btn-success btn-block waves-effect waves-light" id="login_id" type="submit">Log In</button>
-                        </div>
-                    </div>
-                    <div class="form-group text-center row m-t-20">
-                        <div class="col-12">
-                            <a href="http://localhost:2005/register" class="btn btn-danger btn-block waves-effect waves-light">Register</a>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
-
         </div>
     </div>
-</div>
-
 </body>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .LoginBox input[type="text"],
+    .LoginBox input[type="email"],
+    .LoginBox input[type="password"] {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-radius: 0px;
+        border-bottom: 1px solid #ffffff;
+        padding: 10px 5px;
+        line-height: 24px;
+        color: black;
+    }
+    
+    .accountbg {
+        background: url("../images/bg-account.png");
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+    }
+    
+    .wrapper-page {
+        margin: 7.5% auto;
+        max-width: 460px;
+        position: relative;
+    }
+    
+    .wrapper-page .logo-admin {
+        font-size: 28px;
+        line-height: 70px;
+    }
+    
+    .wrapper-page .card {
+        border: 7px double #5b6be8;
+        border-radius: 10px;
+        background-color: transparent;
+        color: white;
+    }
+    
+    .wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        overflow: hidden;
+        background-image: linear-gradient(90deg, rgba(2, 0, .6, 1)0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    }
+    
+    .box div {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        background-color: transparent;
+        border: 4px solid rgba(255, 255, 255, 0.8);
+    }
+    
+    .box div:nth-child(1) {
+        top: 12%;
+        left: 42%;
+        animation: animate 10s linear infinite;
+    }
+    
+    .box div:nth-child(2) {
+        top: 70%;
+        left: 50%;
+        animation: animate 7s linear infinite;
+    }
+    
+    .box div:nth-child(3) {
+        top: 17%;
+        left: 6%;
+        animation: animate 9s linear infinite;
+    }
+    
+    .box div:nth-child(4) {
+        top: 20%;
+        left: 60%;
+        animation: animate 10s linear infinite;
+    }
+    
+    .box div:nth-child(5) {
+        top: 67%;
+        left: 10%;
+        animation: animate 6s linear infinite;
+    }
+    
+    .box div:nth-child(6) {
+        top: 80%;
+        left: 17%;
+        animation: animate 12s linear infinite;
+    }
+    
+    .box div:nth-child(7) {
+        top: 60%;
+        left: 80%;
+        animation: animate 15s linear infinite;
+    }
+    
+    .box div:nth-child(8) {
+        top: 32%;
+        left: 25%;
+        animation: animate 12s linear infinite;
+    }
+    
+    .box div:nth-child(9) {
+        top: 90%;
+        left: 25%;
+        animation: animate 9s linear infinite;
+    }
+    
+    .box div:nth-child(10) {
+        top: 20%;
+        left: 80%;
+        animation: animate 5s linear infinite;
+    }
+    
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1.3) translateY(-90px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+</style>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script>
-    setTimeout(function(){
+    setTimeout(function() {
         $('.error').hide();
-    },3000);
+    }, 3000);
 </script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('.show_pass').click(function () {
-            $('#pass').attr('type','text');
-            $('.hide_pass').attr('style','display:block;cursor:pointer');
-            $('.show_pass').attr('style','display:none;cursor:pointer');
+    $(document).ready(function() {
+        $('.show_pass').click(function() {
+            $('#pass').attr('type', 'text');
+            $('.hide_pass').attr('style', 'display:block;cursor:pointer');
+            $('.show_pass').attr('style', 'display:none;cursor:pointer');
         });
-        $('.hide_pass').click(function () {
-            $('#pass').attr('type','password');
-            $('.show_pass').attr('style','display:block;cursor:pointer');
-            $('.hide_pass').attr('style','display:none;cursor:pointer');
+        $('.hide_pass').click(function() {
+            $('#pass').attr('type', 'password');
+            $('.show_pass').attr('style', 'display:block;cursor:pointer');
+            $('.hide_pass').attr('style', 'display:none;cursor:pointer');
         });
     });
 </script>
+
 </html>
