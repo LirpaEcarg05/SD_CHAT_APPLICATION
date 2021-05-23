@@ -36,10 +36,10 @@ var session_data;
 // io.use(sharedsession(session));
 
 var mysqlConnction = mysql.createConnection({
-    host: '192.168.0.74',
-    user: 'SD-ELECTIVE_CHAT',
-    password: 'asdf123',
-    database: 'node_chat'
+    host: 'remotemysql.com',
+    user: 'feCd6lKYtB',
+    password: 'qGMRq0s3NA',
+    database: 'feCd6lKYtB'
 });
 
 mysqlConnction.connect(function(error) {
